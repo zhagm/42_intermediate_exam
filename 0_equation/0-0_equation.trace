@@ -1,3 +1,4 @@
+(WHILE STATEMENT EXCLUDED LAST CASE (9, 9, 9), MODIFIED SO SHOULD PASS ALL TESTS NOW)
 = Host-specific information ====================================================
 $> hostname; uname -msr
 e1z3r4p5.42.us.org

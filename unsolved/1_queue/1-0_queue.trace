@@ -1,0 +1,167 @@
+(HAD STRUCTS IN HEADER FILE AND DIDN'T SUBMIT, SHOULD HAVE PUT IT AT TOP OF C FILE)
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1z2r8p20.42.us.org
+Darwin 17.4.0 x86_64
+$> date
+Thu Apr 11 13:17:47 PDT 2019
+$> gcc --version
+Configured with: --prefix=/Library/Developer/CommandLineTools/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 9.0.0 (clang-900.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+$> clang --version
+Apple LLVM version 9.0.0 (clang-900.0.39.2)
+Target: x86_64-apple-darwin17.4.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2019/c-exam-alone-in-the-dark-intermediate/practice-exam_20190411/zmagauin
+
+= Git history ==================================================================
+$> git -C /var/folders/tc/w9my7bl17nxg3bk4hb8lnzf40000gp/T/tmpzw7hEc/user log --pretty='%H - %an, %ad : %s'
+31913cfcd4e4ffe8fbed36057563970a454ed038 - zhagm, Thu Apr 11 13:16:55 2019 -0700 : 1_0_queue init/complete
+1a45aee85379e8a63979fb5024fa665a649137ee - zhagm, Thu Apr 11 11:20:17 2019 -0700 : 0_1_find_pivot init/complete
+576b4dc2b1e32a5807b5d10c6575117427f3ff99 - zhagm, Thu Apr 11 10:44:52 2019 -0700 : 0_0_equation init/complete
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/tc/w9my7bl17nxg3bk4hb8lnzf40000gp/T/tmpzw7hEc/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  811 Apr 11 13:17 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Apr 11 13:17 find_pivot
+drwxr-xr-x  3 deepthought  deepthought  102 Apr 11 13:17 queue
+
+/var/folders/tc/w9my7bl17nxg3bk4hb8lnzf40000gp/T/tmpzw7hEc/user/find_pivot:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1151 Apr 11 13:17 find_pivot.c
+
+/var/folders/tc/w9my7bl17nxg3bk4hb8lnzf40000gp/T/tmpzw7hEc/user/queue:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1935 Apr 11 13:17 queue.c
+ 
+= queue ========================================================================
+$> gcc -Wextra -Wall -Werror main.c queue.c -o user_exe 
+queue.c:19:33: error: invalid application of 'sizeof' to an incomplete type 'struct s_queue'
+        new = (struct s_queue *)malloc(sizeof(struct s_queue));
+                                       ^     ~~~~~~~~~~~~~~~~
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:20:5: error: incomplete definition of type 'struct s_queue'
+        new->first = NULL;
+        ~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:21:5: error: incomplete definition of type 'struct s_queue'
+        new->last = NULL;
+        ~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:31:32: error: invalid application of 'sizeof' to an incomplete type 'struct s_node'
+        new = (struct s_node *)malloc(sizeof(struct s_node));
+                                      ^     ~~~~~~~~~~~~~~~
+queue.c:27:9: note: forward declaration of 'struct s_node'
+        struct s_node *new;
+               ^
+queue.c:32:5: error: incomplete definition of type 'struct s_node'
+        new->content = content;
+        ~~~^
+queue.c:27:9: note: forward declaration of 'struct s_node'
+        struct s_node *new;
+               ^
+queue.c:33:5: error: incomplete definition of type 'struct s_node'
+        new->next = NULL;
+        ~~~^
+queue.c:27:9: note: forward declaration of 'struct s_node'
+        struct s_node *new;
+               ^
+queue.c:34:11: error: incomplete definition of type 'struct s_queue'
+        if (queue->last)
+            ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:36:8: error: incomplete definition of type 'struct s_queue'
+                queue->last->next = new;
+                ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:37:8: error: incomplete definition of type 'struct s_queue'
+                queue->last = new;
+                ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:41:8: error: incomplete definition of type 'struct s_queue'
+                queue->first = new;
+                ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:42:8: error: incomplete definition of type 'struct s_queue'
+                queue->last = new;
+                ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:52:11: error: incomplete definition of type 'struct s_queue'
+        if (queue->first)
+            ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:54:19: error: incomplete definition of type 'struct s_queue'
+                dequeued = queue->first;
+                           ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:55:12: error: incomplete definition of type 'struct s_queue'
+                if (queue->first == queue->last)
+                    ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:55:28: error: incomplete definition of type 'struct s_queue'
+                if (queue->first == queue->last)
+                                    ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:56:9: error: incomplete definition of type 'struct s_queue'
+                        queue->last = NULL;
+                        ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:57:8: error: incomplete definition of type 'struct s_queue'
+                queue->first = dequeued->next;
+                ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+queue.c:57:26: error: incomplete definition of type 'struct s_node'
+                queue->first = dequeued->next;
+                               ~~~~~~~~^
+queue.c:48:9: note: forward declaration of 'struct s_node'
+        struct s_node *dequeued;
+               ^
+queue.c:65:28: error: incomplete definition of type 'struct s_queue'
+        if (queue == NULL || queue->first == NULL)
+                             ~~~~~^
+queue.c:15:8: note: forward declaration of 'struct s_queue'
+struct s_queue  *init(void)
+       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+
+Could not compile 'user_exe'
+Grade: 0
+
+= Final grade: 0 ===============================================================
